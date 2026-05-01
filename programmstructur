@@ -1,0 +1,34 @@
+main()
+├── argparse aufsetzen
+├── Pfad validieren (mit Schleife bei Fehler)
+└── encrypt() oder decrypt() aufrufen
+
+encrypt(pfad)
+├── is_file()  → encrypt_file()
+└── is_dir()   → encrypt_directory()
+
+encrypt_file(pfad)
+├── Passwort abfragen (2x, mit Vergleich)
+├── Salt + Nonce erzeugen
+├── Scrypt → Schlüssel
+├── AESGCM verschlüsseln
+├── .enc Datei schreiben
+└── Original löschen (nur bei Erfolg)
+
+encrypt_directory(pfad)
+└── rglob() → für jede Datei → encrypt_file()
+
+decrypt(pfad)
+├── is_file()  → decrypt_file()
+└── is_dir()   → decrypt_directory()
+
+decrypt_file(pfad)
+├── Passwort abfragen (1x)
+├── Salt + Nonce aus Datei lesen
+├── Scrypt → Schlüssel
+├── AESGCM entschlüsseln
+├── Originaldatei zurückschreiben
+└── .enc Datei löschen (nur bei Erfolg)
+
+decrypt_directory(pfad)
+└── rglob() → nur .enc Dateien → decrypt_file()
