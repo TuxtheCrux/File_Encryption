@@ -21,7 +21,7 @@ pip install cryptography
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/file-encryptor.git
+git clone https://github.com/TuxTheCrux/file-encryptor.git
 cd file-encryptor
 pip install cryptography
 ```
